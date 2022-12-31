@@ -64,16 +64,21 @@ class News extends BaseController
     {
         $model = model(NewsModel::class);
 
-        $data['news'] = $model->getNews($slug);
+        // if ($this->request->getMethod() === 'post' && $this->validate([
+        //     'title' => 'required|min_length[3]|max_length[255]',
+        //     'body'  => 'required',
+        // ])) {
+        //     $model->save([
+        //         'title' => $this->request->getPost('title'),
+        //         'slug'  => url_title($this->request->getPost('title'), '-', true),
+        //         'body'  => $this->request->getPost('body'),
+        //     ]);
 
-        if (empty($data['news'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: ' . $slug);
-        }
+        //     return view('news/success');
+        // }
 
-        $data['title'] = $data['news']['title'];
-
-        return view('templates/header', $data)
-            . view('news/update')
-            . view('templates/footer');
+        // return view('templates/header', ['title' => 'Create a news item'])
+        //     . view('news/create')
+        //     . view('templates/footer');
     }
 }
