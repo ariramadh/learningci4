@@ -66,11 +66,11 @@ class News extends BaseController
 
         $data['news'] = $model->getNews($slug);
 
-        // if (empty($data['news'])) {
-        //     throw new \CodeIgniter\Exceptions\PageNotFoundException('Form Update cannot find the news item: ' . $slug);
-        // }
+        if (empty($data['news'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Form Update cannot find the news item: ' . $slug);
+        }
 
-        // $data['title'] = $data['news']['title'];
+        $data['title'] = $data['news']['title'];
 
         return view('templates/header', ['title' => 'Update a news item'])
             . view('news/update', $data)
