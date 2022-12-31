@@ -1,5 +1,7 @@
 <h2><?= esc($title) ?></h2>
 
+<p><a href="/news/create">Create new article</a></p>
+
 <?php if (! empty($news) && is_array($news)): ?>
 
     <?php foreach ($news as $news_item): ?>
@@ -10,7 +12,7 @@
             <?= esc($news_item['body']) ?>
         </div>
         <p><a href="/news/<?= esc($news_item['slug'], 'url') ?>">View article</a></p>
-        <p><a href="/news/update">Update</a></p>
+        <p><a href="/news/">Update</a></p>
 
     <?php endforeach ?>
 
