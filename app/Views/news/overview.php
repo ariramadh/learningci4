@@ -11,8 +11,8 @@
         <div class="main">
             <?= esc($news_item['body']) ?>
         </div>
-        <p><a href="/news/<?= esc($news_item['slug'], 'url') ?>">View article</a></p>
-        <p><a href="/news/update">Update</a></p>
+        <p><a id="viewArticle" href="/news/<?= esc($news_item['slug'], 'url') ?>">View article</a></p>
+        <p><a id="updateArticle" href="/news/update/<?= esc($news_item['slug'], 'url') ?>">Update</a></p>
 
     <?php endforeach ?>
 

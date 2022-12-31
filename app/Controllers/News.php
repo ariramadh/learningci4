@@ -20,23 +20,7 @@ class News extends BaseController
             . view('templates/footer');
     }
 
-    public function view($slug = null)
-    {
-        $model = model(NewsModel::class);
-
-        $data['news'] = $model->getNews($slug);
-
-        if (empty($data['news'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: ' . $slug);
-        }
-
-        $data['title'] = $data['news']['title'];
-
-        return view('templates/header', $data)
-            . view('news/view')
-            . view('templates/footer');
-    }
-
+    
     public function create()
     {
         $model = model(NewsModel::class);
@@ -59,15 +43,31 @@ class News extends BaseController
             . view('templates/footer');
     }
 
-    
-    public function update($slug = null)
+    public function view($slug = null)
     {
         $model = model(NewsModel::class);
 
         $data['news'] = $model->getNews($slug);
 
         if (empty($data['news'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Form Update cannot find the news item: ' . $slug);
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: ' . $slug);
+        }
+
+        $data['title'] = $data['news']['title'];
+
+        return view('templates/header', $data)
+            . view('news/view')
+            . view('templates/footer');
+    }
+    
+    public function update($slug = null)
+    {
+        $model = model(NewsModel::class);
+
+        $data['news'] = $model->getNews($slug);
+        
+        if (empty($data['news'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Update cannot find the news item: ' . $slug);
         }
 
         $data['title'] = $data['news']['title'];
